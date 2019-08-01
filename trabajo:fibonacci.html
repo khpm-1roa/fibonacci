@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibonacci Solver</title>
+</head>
+
+<body>
+
+    <form action="">
+        <label for="fibo1">Primer : </label>
+        <input type="text" name="fibo1" id="fibo1">
+        <br>
+       
+       }<label for="fibo2">Segundo: </label>
+        <input type="text" name="fibo2" id="fibo2">
+        <br>
+      
+      <label for="maximo">Máximo : </label>
+        <input type="text" name="maximo" id="maximo">
+        <br>
+        <br>
+      
+      <input type="button" value="Calcular serie" id="botonSolver">
+        <br>
+    </form>
+    <br>
+    <input type="button" value="Ver Tabla" id="btnGenerar">
+    <br><br><br>
+
+    <table id="tablaSerie" class="table table-borderless" border="2">
+
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</body>
+<script>
+  // autor :kevin pillajo   
+  //descibcion: calcular y generar en una tabla 3x3 la serie de fibonacci
+   //generamos la funcion solver  con tres parametros 
+   function Solver(p, s, m) {
+        this.primero = p;
+        this.segundo = s;
+        this.maximo = m;
+        this.serie = [];
+        this.generar = generar;
+        function generar() {
+            this.serie.push(this.primero)
+            this.serie.push(this.segundo);
+        }
+    }
+  //generamos la serie de fibonacci
+    var listaTodos = [];
+    var generadorFibonacci = function(anterior, ultimo) {
+        if (anterior + ultimo > maximoValorSerie) {
+            return listaTodos;
+        } else {
+            nuevo = anterior + ultimo;
+            listaTodos.push(nuevo);
+            return generadorFibonacci(ultimo, nuevo);
+        }
+    }
+  
+    document.getElementById("botonSolver").addEventListener(
+        "click",
+        function() {
+            primerElemento = parseInt(document.getElementById("fibo1").value);
+            segundoElemento = parseInt(document.getElementById("fibo2").value);
+            maximoValorSerie = parseInt(document.getElementById("maximo").value);
+            listaTodos.push(primerElemento);
+            listaTodos.push(segundoElemento);
+            generadorFibonacci(primerElemento, segundoElemento);
+        }
+    );
+    
+   
+            var indice=0;
+            var tabla = document.getElementById("tbody");
+                  document.getElementById("btnGenerar")
+                  .addEventListener("click",function muestraDatos(){
+
+                  if(indice===listaTodos.length-1){
+                          return PruebaDe10;
+}else{
+    
+    var fila = document.createElement("tr");
+    var fila1 = document.createElement("tr");
+    var fila2 = document.createElement("tr");
+    var td = document.createElement("td");
+    var td1 = document.createElement("td")
+    var td2 = document.createElement("td")
+    //insertamos los datos con el append child
+                        td.appendChild(document.createTextNode(listaTodos[indice]));
+                        td1.appendChild(document.createTextNode(listaTodos[indice+1]));
+                        td2.appendChild(document.createTextNode(listaTodos[indice+2]));
+    //creamos las filas 
+    fila.appendChild(td,);
+    fila.appendChild(td1);
+    fila.appendChild(td2);
+    tabla.appendChild(fila);
+    tabla.appendChild(fila1);
+    tabla.appendChild(fila2);
+    indice++;
+    muestraDatos(indice);
+}
+        })
+        
+        
+</script>
+
+</html>
